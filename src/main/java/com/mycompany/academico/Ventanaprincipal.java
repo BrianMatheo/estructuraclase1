@@ -12,9 +12,13 @@ import javax.swing.JOptionPane;
  */
 public class Ventanaprincipal extends javax.swing.JFrame {
 
-    int arraymenores[];
-    int arrayadultos[];
-    int arrayadultosmayores[];
+    
+        int arraymenores[] = new int[5];
+        int arrayadultos[] = new int[5];
+        int arrayadultosmayores[] = new int [5];
+        int e1 = 0;
+        int e2 = 0;
+        int e3 = 0;
     
     public Ventanaprincipal() {
         initComponents();
@@ -80,24 +84,31 @@ public class Ventanaprincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
-    
-        arraymenores = new int[5];
-        arrayadultos = new int[5];
-        arrayadultosmayores = new int [5];
-        int im = 0;
-        if(im<5){
-             int edad = Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Diga su edad"));
-             im++;
-        if (edad<18 && edad >= 0){
+
+        int edad = Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Diga su edad"));
+        if (edad<18 && edad >= 0 && e1<5){
             JOptionPane.showMessageDialog(rootPane,"usted es menor de edad");
-        }else if(edad>18 && edad<60) {
+            arraymenores[e1] = edad;
+            e1+=1;
+        }else if(edad<18 && edad >= 0 && e1>=5){
+            JOptionPane.showMessageDialog(rootPane, "ya no hay espacio");
+        }
+        else if(edad>18 && edad<60 && e2<5) {
             JOptionPane.showMessageDialog(rootPane, "Usted es mayor de edad");
-        }else if(edad>60){
+            arrayadultos[e2] = edad;
+            e2+=1;
+        }else if(edad>18 && edad<60 && e2>=5){
+            JOptionPane.showMessageDialog(rootPane, "Ya no hay espacio");
+        }else if(edad>60 && e3<5){
             JOptionPane.showMessageDialog(rootPane, "Usted es adulto mayor");
-        }else{
+            arrayadultosmayores[e3] = edad;
+            e3+=1;
+        }else if(edad>60 && e3>=5){
+            JOptionPane.showMessageDialog(rootPane, "Ya no hay espacio");
+        }
+        else{
             JOptionPane.showMessageDialog(rootPane, "ingrese edad valida");
         }
-        } // cierra el if principal
         
        
         
