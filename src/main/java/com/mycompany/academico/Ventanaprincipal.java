@@ -16,6 +16,7 @@ public class Ventanaprincipal extends javax.swing.JFrame {
         int arraymenores[] = new int[5];
         int arrayadultos[] = new int[5];
         int arrayadultosmayores[] = new int [5];
+        int m2 = 0;
         int e1 = 0;
         int e2 = 0;
         int e3 = 0;
@@ -85,39 +86,63 @@ public class Ventanaprincipal extends javax.swing.JFrame {
 
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
 
+        while(m2 < 15){
         int edad = Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Diga su edad"));
+
         if (edad<18 && edad >= 0 && e1<5){
             JOptionPane.showMessageDialog(rootPane,"usted es menor de edad");
             arraymenores[e1] = edad;
             e1+=1;
-        }else if(edad<18 && edad >= 0 && e1>=5){
-            JOptionPane.showMessageDialog(rootPane, "ya no hay espacio");
+            m2+=1;
         }
-        else if(edad>18 && edad<60 && e2<5) {
+        else if(edad>=18 && edad<60 && e2<5) {
             JOptionPane.showMessageDialog(rootPane, "Usted es mayor de edad");
             arrayadultos[e2] = edad;
             e2+=1;
-        }else if(edad>18 && edad<60 && e2>=5){
-            JOptionPane.showMessageDialog(rootPane, "Ya no hay espacio");
-        }else if(edad>60 && e3<5){
+            m2+=1;
+        }
+        else if(edad>=60 && e3<5){
             JOptionPane.showMessageDialog(rootPane, "Usted es adulto mayor");
             arrayadultosmayores[e3] = edad;
             e3+=1;
-        }else if(edad>60 && e3>=5){
+            m2+=1;
+        }else if(e3>=5 || e2>=5 || e1>=5){
             JOptionPane.showMessageDialog(rootPane, "Ya no hay espacio");
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "ingrese edad valida");
         }
-        
+            }
        
         
     }//GEN-LAST:event_createActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        // TODO add your handling code here:
+    
+        if(m2>=14){
+        String concat = " ";
+        String concat2 = " ";
+        String concat3 = " ";
+    for(int i = 0;i<arraymenores.length;i++){
+        concat += arraymenores[i] + " ";
+    }
+        
+        
+    for(int i = 0;i<arrayadultos.length;i++){
+        concat2 += arrayadultos[i] + " ";
+    }
+    for(int i = 0;i<arrayadultosmayores.length;i++){
+        concat3 += arrayadultosmayores[i] + " ";
+    }
+        
+    JOptionPane.showMessageDialog(rootPane, "menores" + concat + "\nadultos " + concat2 + "\nadultos mayores" + concat3);
+    }
+        else{
+                JOptionPane.showMessageDialog(rootPane, "aun no hay 15 valores");
+     }
     }//GEN-LAST:event_searchActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
